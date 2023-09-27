@@ -6,16 +6,12 @@ styles = ['trending on artstation', 'oil painting', 'by greg rutkowski', 'trendi
 
 #Add your own adjectives, objects and styles to the list above!
 
-numadjectives = 5
-numstyles = 10
-
-listadj = rn.sample(adjectives, numadjectives)
-adj = ', '.join(listadj)
-obj = rn.choice(objects)
-prompt = adj + ' ' + obj
-liststyles = rn.sample(styles, numstyles)
-sty = ', '.join(liststyles)
-prompt = prompt + ', ' + sty
-print(prompt)
-pc.copy(prompt)
-print('\nThe prompt has been copied to your clipboard')
+def random_prompt(numadjectives, numstyles):
+    listadj = rn.sample(adjectives, numadjectives)
+    adj = ', '.join(listadj)
+    obj = rn.choice(objects)
+    prompt = adj + ' ' + obj
+    liststyles = rn.sample(styles, numstyles)
+    sty = ', '.join(liststyles)
+    prompt = prompt + ', ' + sty
+    return prompt

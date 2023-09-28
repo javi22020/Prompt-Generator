@@ -1,12 +1,14 @@
 import random as rn
-import pyperclip as pc
-adjectives = ['pretty', 'relaxing', 'calm', 'quiet', 'wonderful', 'nice', 'incredible', 'amazing', 'small', 'futuristic', 'cozy', 'beautiful']
-objects = ['street', 'beach', 'mountain', 'landscape', 'lake', 'planet', 'city', 'river', 'valley', 'tiger', 'cat', 'house near a lake', 'house', 'house near the beach', 'skyscraper', 'nature']
-styles = ['trending on artstation', 'oil painting', 'by greg rutkowski', 'trending on cgsociety', 'minimalistic', 'realistic', '8 k', '4 k', 'detailed', 'intricate', 'hyperdetailed', 'natural', 'colored', '35mm', 'award-winning photography', 'sharp focus']
+import yaml
 
-#Add your own adjectives, objects and styles to the list above!
+# Add your own adjectives, objects and styles to the yaml file!
 
 def random_prompt(numadjectives, numstyles):
+    with open("words.yaml", "r") as file:
+        data = yaml.safe_load(file)
+    adjectives = data["adjectives"]
+    objects = data["objects"]
+    styles = data["styles"]
     listadj = rn.sample(adjectives, numadjectives)
     adj = ', '.join(listadj)
     obj = rn.choice(objects)
